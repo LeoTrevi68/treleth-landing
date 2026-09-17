@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treleth Q&D - Diagnóstico Inicial (D1 - D3)</title>
+  <style>
+    :root { --primary: #0d233a; --secondary: #0056b3; --bg: #f4f7f6; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); margin: 0; padding: 12px; color: #333; }
+    .card { background: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); margin-bottom: 12px; }
+    h1 { font-size: 1.3rem; color: var(--primary); margin: 0 0 10px 0; border-bottom: 2px solid var(--secondary); padding-bottom: 5px; }
+    h2 { color: var(--primary); margin-top: 0; font-size: 1.05rem; }
+    label { font-weight: bold; font-size: 0.8rem; display: block; margin-top: 8px; color: #444; }
+    input, select, textarea { width: 100%; padding: 8px; margin-top: 3px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 0.9rem; }
+    
+    /* Tabla Es / No es */
+    .table-8d { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.82rem; }
+    .table-8d th, .table-8d td { border: 1px solid #ddd; padding: 6px; text-align: left; }
+    .table-8d th { background: #0d233a; color: white; }
+    
+    button { width: 100%; background: var(--secondary); color: white; border: none; padding: 12px; font-size: 0.95rem; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+    .btn-secondary { background: #6c757d; }
+    
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; padding: 0; }
+      .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <div class="card">
+    <h1>Treleth Q&D — Diagnóstico Inicial de Proceso</h1>
+    <p style="font-size: 0.8rem; margin: 0; color: #666;">Ingeniería de Calidad & Análisis de Datos | Alcance: D1 a D3</p>
+  </div>
+
+  <!-- D1: ENCUADRE Y EQUIPO -->
+  <div class="card">
+    <h2>D1. Encuadre de la Intervención & Equipo</h2>
+    <div style="display: flex; gap: 8px;">
+      <div style="flex:1;"><label>Empresa / Planta</label><input type="text" id="empresa" placeholder="Planta Escobedo"></div>
+      <div style="flex:1;"><label>Línea / Proceso</label><input type="text" id="linea" placeholder="Línea 3"></div>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <div style="flex:1;"><label>Fecha de Visita</label><input type="date" id="fecha"></div>
+      <div style="flex:1;"><label>Responsable Planta</label><input type="text" id="responsable" placeholder="Ing. Carlos Garza"></div>
+    </div>
+  </div>
+
+  <!-- D2: ANÁLISIS ES / NO ES -->
+  <div class="card">
+    <h2>D2. Delimitación del Problema (Matriz ES / NO ES)</h2>
+    <table class="table-8d">
+      <thead>
+        <tr>
+          <th>Dimensión</th>
+          <th>ES (Observado)</th>
+          <th>NO ES (Pudo ser y no es)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>¿QUÉ?</strong><br><small>Defecto / Falla</small></td>
+          <td><input type="text" placeholder="Porosidad en cordón"></td>
+          <td><input type="text" placeholder="Grieta o fisura"></td>
+        </tr>
+        <tr>
+          <td><strong>¿DÓNDE?</strong><br><small>Ubicación física</small></td>
+          <td><input type="text" placeholder="Ensamble final B"></td>
+          <td><input type="text" placeholder="Sub-ensamble A"></td>
+        </tr>
+        <tr>
+          <td><strong>¿CUÁNDO?</strong><br><small>Momento / Patrón</small></td>
+          <td><input type="text" placeholder="Arrancado Turno 3"></td>
+          <td><input type="text" placeholder="Turnos 1 y 2"></td>
+        </tr>
+        <tr>
+          <td><strong>¿CUÁNTO?</strong><br><small>Magnitud / Scrap</small></td>
+          <td><input type="text" placeholder="3.5% rechazado"></td>
+          <td><input type="text" placeholder="Paro total de línea"></td>
+        </tr>
+      </tbody>
+    </table>
+    <label>Diferencia Crítica / Patrón Detectado</label>
+    <textarea id="patron" rows="2" placeholder="Ej. La falla se concentra únicamente en cambios de turno o arranques en frío..."></textarea>
+  </div>
+
+  <!-- D3: RECOMENDACIONES DE CONTENCIÓN INMEDIATA -->
+  <div class="card">
+    <h2>D3. Recomendaciones de Contención Inmediata (ICA)</h2>
+    <label>Acciones Sugeridas para Detener el Escape al Cliente</label>
+    <textarea id="contencion" rows="3" placeholder="1. Inspección 100% en estación final.&#10;2. Purga de material al inicio del Turno 3.&#10;3. Registro de temperatura cada 30 min."></textarea>
+  </div>
+
+  <!-- CIERRE Y PROPUESTA DE FASE 2 -->
+  <div class="card">
+    <h2>Próximo Paso Sugerido (Fase 2: D4 - D8)</h2>
+    <p style="font-size: 0.85rem; color: #444; margin-top: 0;">
+      Para avanzar al Análisis de Causa Raíz (D4) y validación de hipótesis, se requiere estructurar y procesar los datos históricos mediante análisis estadístico.
+    </p>
+  </div>
+
+  <!-- BOTONES -->
+  <div class="no-print">
+    <button type="button" onclick="generarPDF()">📄 Imprimir / Guardar Reporte PDF</button>
+    <button type="button" class="btn-secondary" onclick="limpiar()" style="margin-top: 6px;">🔄 Nuevo Levantamiento</button>
+  </div>
+
+  <script>
+    document.getElementById('fecha').valueAsDate = new Date();
+
+    function generarPDF() {
+      window.print();
+    }
+
+    function limpiar() {
+      if(confirm("¿Deseas reiniciar el formulario?")) {
+        location.reload();
+      }
+    }
+  </script>
+</body>
+</html>
